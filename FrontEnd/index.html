@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sophie Bluel - Architecte d'intérieur</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+        rel="stylesheet">
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/16d4a9f5b2.js"></script>
+    <meta content="" name="description">
+    <link href="./assets/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <aside aria-hidden="true" class="modal" id="modal" role="dialog" style="display:none;">
+        <div class="modal-wrapper js-modal-stop">
+            <div class="gallery-modal">
+                <div class="div-close-bouton">
+                    <button class="js-close-modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <h3>Galerie Photo</h3>
+                <div class="galleryModal"></div>
+                <hr />
+                <div class="addPhoto-modal-bouton">
+                    <button class="addPhoto">Ajouter une photo</button>
+                </div>
+            </div>
+            <div class="add-modal">
+                <div class="modal-buttons-container">
+                    <button class="js-back-modal">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button class="js-close-modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <h3>Ajouter une photo</h3>
+                <div class="modal-upload-form">
+                    <form action="#" method="post">
+                        <label for="name">Nom</label>
+                        <input id="name" name="name" type="text">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email">
+                    </form>
+                    <hr />
+                </div>
+                <div class="valider-modal-bouton">
+                    <button class="validerPhoto">Valider</button>
+                </div>
+            </div>
+    </aside>
+
+    <header>
+        <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+        <nav>
+            <ul>
+                <li><a href="#portfolio">projets</a></li>
+                <li><a href="#contact">contact</a></li>
+                <li class="loginbutton"><a href="login.html">login</a></li>
+                <li class="logoutbutton"><a href="#">logout</a></li>
+                <li><a href="#"><img alt="Instagram" src="./assets/icons/instagram.png"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <figure>
+                <img alt="" src="./assets/images/sophie-bluel.png">
+            </figure>
+            <article>
+                <h2>Designer d'espace</h2>
+                <p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
+                    finale du chantier.</p>
+                <p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les
+                    couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du
+                    chantier
+                    sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+                <p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
+                    décorateur(trice)</p>
+            </article>
+        </section>
+        <section id="portfolio">
+            <div class="mesprojets-container">
+                <h2>Mes Projets</h2>
+                <p><a href="#modal" class="js-modal" id="bouton-modifier"><i
+                            class="fa-regular fa-pen-to-square"></i>Modifier</a></p>
+            </div>
+            <div class="filter-container">
+                <div class="tous">Tous</div>
+            </div>
+            <div class="gallery">
+            </div>
+        </section>
+        <div class="form" id="contact">
+            <h2>Contact</h2>
+            <p>Vous avez un projet ? Discutons-en !</p>
+            <form action="#" method="post">
+                <label for="name">Nom</label>
+                <input id="name" name="name" type="text">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email">
+                <label for="message">Message</label>
+                <textarea cols="30" id="message" name="message" rows="10"></textarea>
+                <input type="submit" value="Envoyer">
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <nav>
+            <ul>
+                <li>Mentions Légales</li>
+            </ul>
+        </nav>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
