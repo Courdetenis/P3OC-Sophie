@@ -207,3 +207,91 @@ document.querySelectorAll(".js-close-modal").forEach((closeButton) => {
         document.querySelector(".gallery-modal").style.display = "flex";
     });
 });
+
+document.getElementById("file").addEventListener("change", function (event) {
+    const file = event.target.files[0]
+    if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
+        const reader = new FileReader()
+        reader.onload = function (e) {
+            const img = document.createElement("img")
+            img.src = e.target.result
+            img.alt = file.name
+            document.getElementById("photo-container").appendChild(img)
+            document.querySelector(".fa-image").style.display = "none"
+            document.querySelector(".uploadImageLabel").style.display = "none"
+        }
+        reader.readAsDataURL(file)
+    } else {
+        alert("Le fichier doit être au format jpeg ou png")
+    }
+})
+
+const form = document.getElementById("picture-form");
+const submitButton = document.querySelector(".validerPhoto");
+
+const title = document.getElementById("title");
+const categorySelector = document.getElementById("category");
+const file = document.getElementById("file");
+
+function checkForm() {
+    if (!title.value || !categorySelector.value || !file.value) {
+        console.log("disabled");
+        submitButton.setAttribute("disabled", true);
+        submitButton.classList.add("disabled");
+    } else {
+        console.log("enabled");
+        submitButton.classList.remove("disabled");
+        submitButton.removeAttribute("disabled");
+    }
+}
+checkForm()
+
+title.addEventListener("change", checkForm);
+categorySelector.addEventListener("change", checkForm);
+file.addEventListener("change", checkForm);
+
+submitButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById("title").value;
+    const categoryId = document.getElementById("category").value;
+    const file = document.getElementById("file").files[0];
+
+    if (!title || !categoryId || !file) {
+        alert("Veuillez remplir tous les champs");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("category", categoryId);
+    formData.append("image", file);
+
+    try {
+        const response = await fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${sessionStorage.getItem("token")}`,
+            },
+            body: formData
+        });
+
+        if (response.ok) {
+            form.reset();
+            document.getElementById("photo-container").innerHTML = "";
+            document.querySelector(".fa-image").style.display = "block";
+            document.querySelector(".uploadImageLabel").style.display = "block";
+
+            document.querySelector(".add-modal").style.display = "none";
+            document.querySelector(".gallery-modal").style.display = "flex";
+            document.querySelector(".galleryModal").innerHTML = "";
+            document.querySelector(".gallery").innerHTML = "";
+            await getWorks();
+        } else {
+            throw new Error("Erreur lors de l'upload");
+        }
+    } catch (error) {
+        console.error(error);
+        alert("Erreur lors de l'upload de l'image");
+    }
+});

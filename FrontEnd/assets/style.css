@@ -5,6 +5,7 @@
 
 * {
     box-sizing: border-box;
+    background-color: #FFFEF8;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -141,11 +142,6 @@ li:hover {
     margin-bottom: 0.5em;
 }
 
-#portfolio h2 {
-    text-align: center;
-    margin-bottom: 1em;
-}
-
 .filter-container {
     display: flex;
     flex-direction: row;
@@ -247,6 +243,13 @@ li:hover {
 }
 
 .modal-upload-form input {
+    height: 50px;
+    font-size: 1.2em;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.modal-upload-form select {
     height: 50px;
     font-size: 1.2em;
     border: none;
@@ -422,14 +425,15 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
+    gap: 15px;
 }
 
-.mesprojets-container h2 {
-    text-align: center;
-}
-
-.mesprojets-container {
-    margin-left: 10px;
+.mesprojets-container a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    gap: 10px;
 }
 
 .figure-wrapper {
@@ -478,4 +482,44 @@ hr {
 .add-modal {
     justify-content: center;
     flex-direction: column;
+}
+
+.file-div {
+    background-color: #E8F1F6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.uploadImageLabel {
+    border-radius: 50px;
+    padding: 10px 15px;
+    font-family: "Work Sans";
+    font-weight: 500;
+    color: #306685;
+    background-color: #CBD6DC;
+    cursor: pointer;
+    width: 200px;
+    text-align: center;
+}
+
+#photo-container {
+    width: 80%;
+}
+
+#photo-container img {
+    width: 100%;
+}
+
+.fa-image {
+    font-size: 70px;
+    margin-top: 20px;
+    color: #B9C5CC;
+}
+
+.disabled {
+    background-color: grey;
+    border: none;
+    cursor: not-allowed;
 }

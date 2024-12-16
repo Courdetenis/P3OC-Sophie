@@ -20,11 +20,11 @@
         <div class="modal-wrapper js-modal-stop">
             <div class="gallery-modal">
                 <div class="div-close-bouton">
+                    <h3 class="galerie-photo-h3">Galerie Photo</h3>
                     <button class="js-close-modal">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-                <h3>Galerie Photo</h3>
                 <div class="galleryModal"></div>
                 <hr />
                 <div class="addPhoto-modal-bouton">
@@ -36,22 +36,34 @@
                     <button class="js-back-modal">
                         <i class="fa-solid fa-arrow-left"></i>
                     </button>
+                    <h3>Ajout Photo</h3>
                     <button class="js-close-modal">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-                <h3>Ajouter une photo</h3>
                 <div class="modal-upload-form">
-                    <form action="#" method="post">
-                        <label for="name">Nom</label>
-                        <input id="name" name="name" type="text">
-                        <label for="email">Email</label>
-                        <input id="email" name="email" type="email">
+                    <form id="picture-form" action="#" method="post">
+                        <div class="file-div">
+                            <div id="photo-container"></div>
+                            <input class="uploadImage" type="file" id="file" name="file" accept="image/png, image/jpeg" style="display:none;">
+                            <i class="fa-regular fa-image"></i>
+                            <label for="file" class="uploadImageLabel">+ Ajouter photo</label>
+                        </div>
+                        <label for="title">Titre</label>
+                        <input id="title" name="title" type="text">
+                        <label for="category">Catégorie</label>
+                        <!-- <input id="category" name="category" type="category"> -->
+                        <select name="category" id="category">
+                            <option value="">Sélectionner une catégorie</option>
+                            <option value="1">Objets</option>
+                            <option value="2">Appartements</option>
+                            <option value="3">Hôtels & restaurants</option>
+                        </select>
                     </form>
                     <hr />
                 </div>
                 <div class="valider-modal-bouton">
-                    <button class="validerPhoto">Valider</button>
+                    <button class="validerPhoto" class="disabled">Valider</button>
                 </div>
             </div>
     </aside>
