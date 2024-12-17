@@ -1,5 +1,5 @@
-// Gallery
-async function getWorks(filter) {
+/////////////////////////////////////// Gallery //////////////////////////////////////////////
+async function getWorks(filter) {                                                           
     document.querySelector(".gallery").innerHTML = "";
     const response = await fetch("http://localhost:5678/api/works");
     const dataJson = await response.json();
@@ -28,8 +28,10 @@ function setFigure(data) {
 
     document.querySelector(".gallery").append(figure);
 }
+///////////////////////////////////////////////////////////////////////////////////////////////
 
-// Filters
+
+/////////////////////////////////////// Filters //////////////////////////////////////////////
 if (!sessionStorage.token) {
     async function getCategories() {
         const response = await fetch("http://localhost:5678/api/categories");
@@ -53,8 +55,10 @@ if (!sessionStorage.token) {
 } else {
     document.querySelector(".filter-container").style.display = "none";
 }
+///////////////////////////////////////////////////////////////////////////////////////////////
 
-// Mode édition + Admin
+
+///////////////////////////////////////////// Admin mode /////////////////////////////////////
 function adminMode() {
     if (sessionStorage.token) {
         const editBanner = document.createElement("div")
@@ -76,15 +80,20 @@ function buttonMode() {
 }
 
 buttonMode();
+//////////////////////////////////////////////////////////////////////////////////////////////
 
+
+///////////////////////////////////////////// Logout ////////////////////////////////////////
 function logout() {
     sessionStorage.removeItem("token");
     window.location.href = "index.html";
 }
 
 document.querySelector(".logoutbutton").addEventListener("click", logout);
+/////////////////////////////////////////////////////////////////////////////////////////////
 
-// Modal
+
+///////////////////////////////////////////// Modal ////////////////////////////////////////
 let modal = null
 const focusableSelector = 'button, a, input, textarea'
 let focusables = []
@@ -137,7 +146,7 @@ const focusInModal = function (e) {
         index = focusables.length - 1
     }
     focusables[index].focus()
-    console.log(focusables)
+    
 }
 
 window.addEventListener('keydown', (e) => {
@@ -148,11 +157,10 @@ window.addEventListener('keydown', (e) => {
         focusInModal(e)
     }
 })
+///////////////////////////////////////////////////////////////////////////////////////////
 
-function setUploadPhoto(data) {
 
-}
-
+///////////////////////////////// Gallery Modal 1 ////////////////////////////////////////
 function setFigureModal(data) {
     const figure = document.createElement("figure");
     figure.setAttribute("data-id", data.id);
@@ -207,7 +215,10 @@ document.querySelectorAll(".js-close-modal").forEach((closeButton) => {
         document.querySelector(".gallery-modal").style.display = "flex";
     });
 });
+//////////////////////////////////////////////////////////////////////////////////////
 
+
+//////////////////////////// Add Picture Modal 2 ////////////////////////////////////
 document.getElementById("file").addEventListener("change", function (event) {
     const file = event.target.files[0]
     if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
@@ -235,11 +246,9 @@ const file = document.getElementById("file");
 
 function checkForm() {
     if (!title.value || !categorySelector.value || !file.value) {
-        console.log("disabled");
         submitButton.setAttribute("disabled", true);
         submitButton.classList.add("disabled");
     } else {
-        console.log("enabled");
         submitButton.classList.remove("disabled");
         submitButton.removeAttribute("disabled");
     }
@@ -271,7 +280,7 @@ submitButton.addEventListener("click", async (e) => {
         const response = await fetch("http://localhost:5678/api/works", {
             method: "POST",
             headers: {
-                "Authorization": `Bearer ${sessionStorage.getItem("token")}`,
+                "Authorization": "Bearer " + sessionStorage.getItem("token"),
             },
             body: formData
         });
