@@ -357,8 +357,6 @@ li > a:hover {
 .modal-wrapper {
     overflow: auto;
     background-color: white;
-    max-width: calc(100vh - 20px);
-    max-height: calc(100vh - 20px);
     width: 600px;
     padding: 20px;
     box-sizing: border-box;
