@@ -5,9 +5,6 @@ async function launchSubmit() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    console.log("E-mail: " + email);
-    console.log("Password: " + password);
-
     const user = {
         email: email,
         password: password,
@@ -24,9 +21,7 @@ async function launchSubmit() {
 
         if (response.ok) {
             const result = await response.json();
-            sessionStorage.setItem("token", result.token);
-            let accessToken = sessionStorage.getItem("token");
-            console.log(accessToken)
+            sessionStorage.setItem("token", result.token); 
             window.location.href = "index.html"
         } else {
             if (!document.querySelector(".error-login")) {
