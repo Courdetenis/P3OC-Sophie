@@ -219,8 +219,17 @@ document.querySelectorAll(".js-close-modal").forEach((closeButton) => {
 
 
 //////////////////////////// Add Picture Modal 2 ////////////////////////////////////
+const MAX_FILE_SIZE = 4096000;
+
 document.getElementById("file").addEventListener("change", function (event) {
     const file = event.target.files[0]
+
+    if (file.size > MAX_FILE_SIZE) {
+        alert("Le fichier est trop volumineux. Taille maximum : 4 Mo");
+        this.value = ""; // Reset input
+        return;
+    }
+
     if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
         const reader = new FileReader()
         reader.onload = function (e) {
@@ -230,6 +239,7 @@ document.getElementById("file").addEventListener("change", function (event) {
             document.getElementById("photo-container").appendChild(img)
             document.querySelector(".fa-image").style.display = "none"
             document.querySelector(".uploadImageLabel").style.display = "none"
+            document.querySelector(".p-limit").style.display = "none"
         }
         reader.readAsDataURL(file)
     } else {
@@ -268,6 +278,11 @@ submitButton.addEventListener("click", async (e) => {
 
     if (!title || !categoryId || !file) {
         alert("Veuillez remplir tous les champs");
+        return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+        alert("Le fichier est trop volumineux. Taille maximum : 4 Mo");
         return;
     }
 
